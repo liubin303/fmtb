@@ -7,8 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMCellModelBasicProtocol.h"
 
+@interface FMBaseCellModel : NSObject<FMCellModelBasicProtocol>
 
-@interface FMBaseCellModel : NSObject
+///-----------------------------
+/// @ Initializes Methoh
+///-----------------------------
+- (id)initWithDefault __attribute__((objc_requires_super));
+
+///-----------------------------
+/// @ Operation Cell
+///-----------------------------
+- (void)selectRowAnimated:(BOOL)animated;
+- (void)selectRowAnimated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)deselectRowAnimated:(BOOL)animated;
+- (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation;
+- (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation;
 
 @end

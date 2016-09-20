@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FMTB.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : FMTableViewController
 
 
 @end

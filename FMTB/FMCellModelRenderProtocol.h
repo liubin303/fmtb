@@ -14,6 +14,9 @@
  */
 @protocol FMCellModelRenderProtocol <NSObject>
 
+///-----------------------------
+/// 基础样式配置
+///-----------------------------
 /*!
  *  @brief 高度
  */
@@ -105,16 +108,5 @@
  *  @brief 选中状态的背景图片
  */
 @property (nonatomic, strong) UIImage *selectedBackgroundImage;
-
-///-----------------------------
-/// 默认控件的配置
-///-----------------------------
-@property (nonatomic, copy  ) NSString           *titleText;
-@property (nonatomic, strong) UIFont             *titleFont;
-@property (nonatomic, strong) UIColor            *titleColor;
-@property (nonatomic, strong) NSAttributedString *titleAttrbuteString;
-@property (nonatomic, strong) UIImage            *imageName;
-@property (nonatomic, copy  ) NSString           *detailText;
-@property (nonatomic, assign) NSTextAlignment    textAlignment;
 
 @end

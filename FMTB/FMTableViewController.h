@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMTableViewAdaptor.h"
+@interface FMTableViewController : UIViewController<FMTableViewAdaptorDelegate>
 
-@interface FMTableViewController : UIViewController
+// tableView
+@property (nonatomic, strong) UITableView *tableView;
+
+// tableView数据适配器
+@property (nonatomic, strong) FMTableViewAdaptor *tableViewAdaptor;
 
 @end
