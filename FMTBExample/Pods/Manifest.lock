@@ -1,0 +1,17 @@
+PODS:
+  - FMTB (0.1.0):
+    - MJRefresh (~> 2.3.2)
+  - MJRefresh (2.3.2)
+
+DEPENDENCIES:
+  - FMTB (from `../`)
+
+EXTERNAL SOURCES:
+  FMTB:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FMTB: 0457478e5df8de1616ba1a54e54795ac01f2550d
+  MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
+
+COCOAPODS: 0.39.0
