@@ -28,15 +28,18 @@
 
 // 背景
 @property (nonatomic, strong) UIView *normalBackgroundView;
-@property (nonatomic, strong) UIImage *normalBackgroundImage;
-@property (nonatomic, strong) UIImageView *normalBackgroundImageView;
 @property (nonatomic, strong) UIColor *normalBackgroundColor;
+
+@property (nonatomic, strong) UIImageView *normalBackgroundImageView;
+@property (nonatomic, strong) UIImage *normalBackgroundImage;
+
 
 // 选中背景
 @property (nonatomic, strong) UIView *highlightedBackgroundView;
-@property (nonatomic, strong) UIImage *highlightedBackgroundImage;
-@property (nonatomic, strong) UIImageView *highlightedBackgroundImageView;
 @property (nonatomic, strong) UIColor *highlightedBackgroundColor;
+
+@property (nonatomic, strong) UIImageView *highlightedBackgroundImageView;
+@property (nonatomic, strong) UIImage *highlightedBackgroundImage;
 
 @end
 
@@ -86,7 +89,7 @@
         self.highlightedBackgroundView.backgroundColor = self.highlightedBackgroundColor;
     }
     // 设置分割线和背景的frame
-    CGRect contentFrame = self.contentView.frame;
+    CGRect contentFrame = self.bounds;
     contentFrame.origin.x = contentFrame.origin.x + self.contentViewMargin;
     contentFrame.size.width = contentFrame.size.width - self.contentViewMargin * 2;
     self.contentView.frame = contentFrame;
@@ -147,7 +150,7 @@
         self.separateLineHeight         = _object.separateLineHeight;
         self.normalBackgroundColor      = _object.normalBackgroundColor;
         self.highlightedBackgroundColor = _object.selectedBackgroundColor;
-        self.normalBackgroundImage      = _object.normalBackgroundColor;
+        self.normalBackgroundImage      = _object.normalBackgroundImage;
         self.highlightedBackgroundImage = _object.selectedBackgroundImage;
     }
 }

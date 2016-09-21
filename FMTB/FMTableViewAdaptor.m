@@ -10,7 +10,6 @@
 #import "FMTableViewSection.h"
 #import "FMBaseCellModel.h"
 #import "FMBaseTableViewCell.h"
-#import <objc/runtime.h>
 #import "MJRefresh.h"
 
 #define kSectionDefaultHeight (22)
@@ -347,7 +346,7 @@
         return 0;
     }
     FMTableViewSection *section = [self.sections objectAtIndex:sectionIndex];
-    if (section.headerHeight > 0) {
+    if (section.headerHeight != FMTableViewSectionHeaderHeightAutomatic) {
         return section.headerHeight;
     }
     
@@ -360,7 +359,7 @@
             CGFloat headerHeight = 0;
             CGFloat headerWidth = CGRectGetWidth(CGRectIntegral(tableView.bounds)) - 40.0f; // 40 = 20pt horizontal padding on each side
             
-            CGSize headerRect = CGSizeMake(headerWidth, MAXFLOAT);
+            CGSize headerRect = CGSizeMake(headerWidth,FMTableViewSectionHeaderHeightAutomatic);
             
             CGRect headerFrame = [section.headerTitle boundingRectWithSize:headerRect
                                                                    options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
@@ -386,7 +385,7 @@
     }
     FMTableViewSection *section = [self.sections objectAtIndex:sectionIndex];
     
-    if (section.footerHeight > 0) {
+    if (section.footerHeight != FMTableViewSectionFooterHeightAutomatic) {
         return section.footerHeight;
     }
     
@@ -399,7 +398,7 @@
             CGFloat footerHeight = 0;
             CGFloat footerWidth = CGRectGetWidth(CGRectIntegral(tableView.bounds)) - 40.0f; // 40 = 20pt horizontal padding on each side
             
-            CGSize footerRect = CGSizeMake(footerWidth, MAXFLOAT);
+            CGSize footerRect = CGSizeMake(footerWidth, FMTableViewSectionFooterHeightAutomatic);
             
             CGRect footerFrame = [section.footerTitle boundingRectWithSize:footerRect
                                                                    options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)

@@ -10,6 +10,9 @@
 @class FMTableViewAdaptor;
 @class FMBaseCellModel;
 
+extern CGFloat const FMTableViewSectionHeaderHeightAutomatic;
+extern CGFloat const FMTableViewSectionFooterHeightAutomatic;
+
 @interface FMTableViewSection : NSObject
 
 // cellModel集合

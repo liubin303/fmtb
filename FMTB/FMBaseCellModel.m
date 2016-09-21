@@ -50,7 +50,7 @@
 - (id)init{
     self = [super init];
     if (self) {
-        self.cellClass                = [self class];
+        self.cellClass                = [FMBaseTableViewCell class];
         self.cellIdentifier           = NSStringFromClass([self class]);
         self.cellHeight               = 0;
         self.userInteractionEnabled   = YES;
