@@ -38,7 +38,7 @@
 
 #pragma mark - FMTableViewAdaptorDelegate
 - (BOOL)tableViewDataIsLoading:(UITableView *)tableView{
-    return  self.manager.isLoading;
+    return self.manager.isLoading;
 }
 
 - (void)tableViewLoadMoreData:(UITableView *)tableView{
