@@ -45,6 +45,7 @@
 
 @implementation FMBaseTableViewCell
 
+@synthesize loaded                     = _loaded;
 @synthesize separateLineColor          = _separateLineColor;
 @synthesize separateLineHeight         = _separateLineHeight;
 @synthesize separateLineLeftPadding    = _separateLineLeftPadding;
@@ -149,8 +150,8 @@
         self.separateLineRightPadding   = _object.separateLineRightPadding;
         self.separateLineHeight         = _object.separateLineHeight;
         self.normalBackgroundColor      = _object.normalBackgroundColor;
-        self.highlightedBackgroundColor = _object.selectedBackgroundColor;
         self.normalBackgroundImage      = _object.normalBackgroundImage;
+        self.highlightedBackgroundColor = _object.selectedBackgroundColor;
         self.highlightedBackgroundImage = _object.selectedBackgroundImage;
     }
 }

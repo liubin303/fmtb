@@ -22,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableViewAdaptor.dragRefreshEnable = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self.manager loadData];
 }
 

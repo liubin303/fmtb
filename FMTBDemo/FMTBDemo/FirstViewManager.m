@@ -39,22 +39,22 @@
     item.cellTag = FirstViewCellTag2;
     [section1 addItem:item];
     
-//    item = [self generateItemWithImage:@"icon_usercenter_favorite" title:@"收藏"];
-//    item.cellTag = FirstViewCellTag3;
-//    [section1 addItem:item];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_feedback" title:@"反馈"];
-//    item.cellTag = FirstViewCellTag4;
-//    [section1 addItem:item];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_help" title:@"帮助"];
-//    item.cellTag = FirstViewCellTag5;
-//    [section1 addItem:item];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_sevice" title:@"服务"];
-//    item.cellTag = FirstViewCellTag6;
-//    [section1 addItem:item];
-//    [section1 addItem:spaceItem];
+    item = [self generateItemWithImage:@"icon_usercenter_favorite" title:@"收藏"];
+    item.cellTag = FirstViewCellTag3;
+    [section1 addItem:item];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_feedback" title:@"反馈"];
+    item.cellTag = FirstViewCellTag4;
+    [section1 addItem:item];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_help" title:@"帮助"];
+    item.cellTag = FirstViewCellTag5;
+    [section1 addItem:item];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_sevice" title:@"服务"];
+    item.cellTag = FirstViewCellTag6;
+    [section1 addItem:item];
+    [section1 addItem:spaceItem];
     
     FMTableViewSection *section2 = [FMTableViewSection sectionWithHeaderTitle:@"second section"];
     
@@ -63,29 +63,29 @@
     [section2 addItem:item];
     [section2 addItem:spaceItem];
     
-//    item = [self generateItemWithImage:@"icon_usercenter_account" title:@"账户"];
-//    item.cellTag = FirstViewCellTag2;
-//    [section2 addItem:item];
-//    [section2 addItem:spaceItem];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_favorite" title:@"收藏"];
-//    item.cellTag = FirstViewCellTag3;
-//    [section2 addItem:item];
-//    [section2 addItem:spaceItem];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_feedback" title:@"反馈"];
-//    item.cellTag = FirstViewCellTag4;
-//    [section2 addItem:item];
-//    [section2 addItem:spaceItem];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_help" title:@"帮助"];
-//    item.cellTag = FirstViewCellTag5;
-//    [section2 addItem:item];
-//    [section2 addItem:spaceItem];
-//    
-//    item = [self generateItemWithImage:@"icon_usercenter_sevice" title:@"服务"];
-//    item.cellTag = FirstViewCellTag6;
-//    [section2 addItem:item];
+    item = [self generateItemWithImage:@"icon_usercenter_account" title:@"账户"];
+    item.cellTag = FirstViewCellTag2;
+    [section2 addItem:item];
+    [section2 addItem:spaceItem];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_favorite" title:@"收藏"];
+    item.cellTag = FirstViewCellTag3;
+    [section2 addItem:item];
+    [section2 addItem:spaceItem];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_feedback" title:@"反馈"];
+    item.cellTag = FirstViewCellTag4;
+    [section2 addItem:item];
+    [section2 addItem:spaceItem];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_help" title:@"帮助"];
+    item.cellTag = FirstViewCellTag5;
+    [section2 addItem:item];
+    [section2 addItem:spaceItem];
+    
+    item = [self generateItemWithImage:@"icon_usercenter_sevice" title:@"服务"];
+    item.cellTag = FirstViewCellTag6;
+    [section2 addItem:item];
     
     [self.sections addObjectsFromArray:@[section1,section2]];
 }

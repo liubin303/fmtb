@@ -66,7 +66,7 @@
     // 注册cell
     Class cellClass = cellModel.cellClass;
     NSString *cellIdentifier = [self identifierForCellAtIndexPath:indexPath];
-    if (cellModel.useNib == YES) {
+    if (cellModel.useNib) {
         // dequeue时会调用 cell 的 -(void)awakeFromNib
         UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:cellIdentifier];
@@ -74,11 +74,7 @@
         // dequeue时会调用 cell 的 - (id)initWithStyle:withReuseableCellIdentifier:
         [tableView registerClass:cellClass forCellReuseIdentifier:cellIdentifier];
     }
-    /*
-     * 注意：如为了兼容FDTemplateLayoutCell，必须要先注册cell
-     * 使用dequeueReuseableCellWithIdentifier:可不注册，但是必须对获取回来的cell进行判断是否为空，若空则手动创建新的cell；
-     * 使用dequeueReuseableCellWithIdentifier:forIndexPath:必须注册，但返回的cell可省略空值判断的步骤。
-     */
+
     FMBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     // 这里再检查一下是否已经加载过cell
     if (!cell.loaded) {
