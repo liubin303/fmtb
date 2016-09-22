@@ -18,6 +18,7 @@
 
 /*!
  *  @brief cell的类
+ *  @default FMBaseTableViewCell
  */
 @property (nonatomic, strong) Class cellClass;
 
@@ -28,16 +29,19 @@
 
 /*!
  *  @brief 复用字符串标识
+ *  @default cellModelClass
  */
 @property (nonatomic, copy) NSString *cellIdentifier;
 
 /*!
  *  @brief 是否允许交互
+ *  @default YES
  */
 @property (nonatomic, assign) BOOL userInteractionEnabled;
 
 /*!
  *  @brief 是否使用xib
+ *  @default NO
  */
 @property (nonatomic, assign) BOOL useNib;
 

@@ -154,29 +154,6 @@
     return section.footerView;
 }
 
-#pragma mark - move cell
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.sections.count <= indexPath.section) {
-        return NO;
-    }
-    FMTableViewSection *section = [self.sections objectAtIndex:indexPath.section];
-    FMBaseCellModel *cellModel = [section.items objectAtIndex:indexPath.row];
-    return cellModel.moveHandler != nil;
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    FMTableViewSection *sourceSection = [self.sections objectAtIndex:sourceIndexPath.section];
-    FMBaseCellModel *cellModel = [sourceSection.items objectAtIndex:sourceIndexPath.row];
-    [sourceSection removeItemAtIndex:sourceIndexPath.row];
-    
-    FMTableViewSection *destinationSection = [self.sections objectAtIndex:destinationIndexPath.section];
-    [destinationSection insertItem:cellModel atIndex:destinationIndexPath.row];
-    
-    if (cellModel.moveCompletionHandler){
-        cellModel.moveCompletionHandler(cellModel, sourceIndexPath, destinationIndexPath);
-    }
-}
-
 #pragma mark - edit cell
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section < [self.sections count]) {
@@ -184,7 +161,7 @@
         if (indexPath.row < [section.items count]) {
             FMBaseCellModel *cellModel = [section.items objectAtIndex:indexPath.row];
             if ([cellModel isKindOfClass:[FMBaseCellModel class]]) {
-                return cellModel.editingStyle != UITableViewCellEditingStyleNone || cellModel.moveHandler;
+                return cellModel.editingStyle != UITableViewCellEditingStyleNone;
             }
         }
     }
@@ -443,21 +420,6 @@
 }
 
 #pragma mark - select cell
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    FMTableViewSection *section = [self.sections objectAtIndex:indexPath.section];
-    id item = [section.items objectAtIndex:indexPath.row];
-    if ([item respondsToSelector:@selector(setAccessoryButtonTapHandler:)]) {
-        FMBaseCellModel *actionItem = (FMBaseCellModel *)item;
-        if (actionItem.accessoryButtonTapHandler)
-        actionItem.accessoryButtonTapHandler(item);
-    }
-    
-    // Forward to UITableView delegate
-    if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:accessoryButtonTappedForRowWithIndexPath:)]){
-        [self.delegate tableView:tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
-    }
-}
-
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     // Forward to UITableView delegate
     if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:shouldHighlightRowAtIndexPath:)])
@@ -516,6 +478,9 @@
     if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
         [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
+    
+    // 马上恢复之前的颜色，并且不挡住分割线
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -524,32 +489,6 @@
     [self.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath];
 }
 
-// Moving/reordering
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath{
-    FMTableViewSection *sourceSection = [self.sections objectAtIndex:sourceIndexPath.section];
-    FMBaseCellModel *cellModel = [sourceSection.items objectAtIndex:sourceIndexPath.row];
-    if (cellModel.moveHandler) {
-        BOOL allowed = cellModel.moveHandler(cellModel, sourceIndexPath, proposedDestinationIndexPath);
-        if (!allowed)
-        return sourceIndexPath;
-    }
-    
-    // Forward to UITableView delegate
-    if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)])
-    return [self.delegate tableView:tableView targetIndexPathForMoveFromRowAtIndexPath:sourceIndexPath toProposedIndexPath:proposedDestinationIndexPath];
-    
-    return proposedDestinationIndexPath;
-}
-
-// Indentation
-
-- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
-    // Forward to UITableView delegate
-    if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:indentationLevelForRowAtIndexPath:)])
-    return [self.delegate tableView:tableView indentationLevelForRowAtIndexPath:indexPath];
-    
-    return 0;
-}
 
 #pragma mark - UIScrollViewDelegate
 

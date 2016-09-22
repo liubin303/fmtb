@@ -22,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableViewAdaptor.dragRefreshEnable = YES;
+    // 可以定制tableview的样式
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (void)viewDidAppear:(BOOL)animated{

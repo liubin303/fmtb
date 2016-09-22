@@ -59,9 +59,9 @@
     if (self.cellModel.icon) {
         CGRect iconFrame = CGRectMake(10, 10, self.cellModel.icon.size.width, self.cellModel.icon.size.height);
         self.iconImageView.frame = iconFrame;
-        CGRect titleFrame = CGRectMake(CGRectGetMaxX(self.iconImageView.frame)+10, self.cellModel.icon.size.height/2, [[UIScreen mainScreen] bounds].size.width - 10 - 10 - self.cellModel.icon.size.width -10, 20);
-        self.titleLabel.frame = titleFrame;
     }
+    CGRect titleFrame = CGRectMake(10 + self.cellModel.icon.size.width + (self.cellModel.icon ? 10 : 0), (self.bounds.size.height-20)/2, [[UIScreen mainScreen] bounds].size.width - 10 - (self.cellModel.icon ? 10 : 0) - self.cellModel.icon.size.width -10, 20);
+    self.titleLabel.frame = titleFrame;
 }
 
 + (CGFloat)tableView:(UITableView *)tableView heightForRowWithCellModel:(FMBaseCellModel *)item{

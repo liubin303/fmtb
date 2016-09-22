@@ -15,7 +15,7 @@
         self.cellClass = [FMSpaceCell class];
         self.cellHeight = 10;
         self.normalBackgroundColor = [UIColor lightGrayColor];
-        self.accessoryType = UITableViewCellAccessoryNone;
+        self.hiddenRightArrow = YES;
         self.hiddenSeparateLine = YES;
         self.userInteractionEnabled = NO;
     }

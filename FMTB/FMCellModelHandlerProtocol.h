@@ -19,16 +19,10 @@
 @property (nonatomic, copy) void (^selectionHandler)(id item);
 
 /*!
- *  @brief 点击指示器按钮回调
- */
-@property (nonatomic, copy) void (^accessoryButtonTapHandler)(id item);
-
-/*!
  *  @brief 删除回调
  */
 @property (nonatomic, copy) void (^deletionHandler)(id item);
-@property (nonatomic, copy) BOOL (^moveHandler)(id item, NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath);
-@property (nonatomic, copy) void (^moveCompletionHandler)(id item, NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath);
+
 
 @end
 

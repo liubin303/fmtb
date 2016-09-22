@@ -13,6 +13,7 @@
 
 @implementation FMBaseCellModel
 
+// basic
 @synthesize cellClass = _cellClass;
 @synthesize cellIdentifier = _cellIdentifier;
 @synthesize cellTag = _cellTag;
@@ -22,11 +23,10 @@
 @synthesize parentSection = _parentSection;
 @synthesize indexPath = _indexPath;
 
+// render
 @synthesize cellHeight = _cellHeight;
 @synthesize contentViewMargin = _contentViewMargin;
 @synthesize backgroundImageMargin = _backgroundImageMargin;
-@synthesize accessoryType = _accessoryType;
-@synthesize accessoryView = _accessoryView;
 @synthesize selectionStyle = _selectionStyle;
 @synthesize editingStyle = _editingStyle;
 @synthesize deleteButtonTitle = _deleteButtonTitle;
@@ -35,16 +35,17 @@
 @synthesize separateLineHeight = _separateLineHeight;
 @synthesize separateLineLeftPadding = _separateLineLeftPadding;
 @synthesize separateLineRightPadding = _separateLineRightPadding;
+@synthesize hiddenRightArrow = _hiddenRightArrow;
+@synthesize rightArrowRightPadding = _rightArrowRightPadding;
+@synthesize customArrowImage = _customArrowImage;
 @synthesize normalBackgroundColor = _normalBackgroundColor;
 @synthesize selectedBackgroundColor = _selectedBackgroundColor;
 @synthesize normalBackgroundImage = _normalBackgroundImage;
 @synthesize selectedBackgroundImage = _selectedBackgroundImage;
 
+// handler
 @synthesize selectionHandler = _selectionHandler;
-@synthesize accessoryButtonTapHandler = _accessoryButtonTapHandler;
 @synthesize deletionHandler = _deletionHandler;
-@synthesize moveHandler = _moveHandler;
-@synthesize moveCompletionHandler = _moveCompletionHandler;
 
 #pragma mark - Initializing Item
 - (id)init{
@@ -54,15 +55,16 @@
         self.cellIdentifier           = NSStringFromClass([self class]);
         self.cellHeight               = 0;
         self.userInteractionEnabled   = YES;
-        self.selectionStyle           = UITableViewCellSelectionStyleNone;
-        self.accessoryType            = UITableViewCellAccessoryDisclosureIndicator;
-        self.accessoryView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_cell_arrow_gray"]];
+        self.selectionStyle           = UITableViewCellSelectionStyleDefault;
         self.editingStyle             = UITableViewCellEditingStyleNone;
         self.hiddenSeparateLine       = NO;
         self.separateLineColor        = [UIColor blackColor];
         self.separateLineHeight       = 1;
         self.separateLineLeftPadding  = 0;
         self.separateLineRightPadding = 0;
+        self.hiddenRightArrow         = NO;
+        self.rightArrowRightPadding   = 10;
+        self.customArrowImage         = [UIImage imageNamed:[@"FMTB.bundle" stringByAppendingPathComponent:@"icon_cell_arrow_gray.png"]];
         self.normalBackgroundColor    = [UIColor whiteColor];
         self.selectedBackgroundColor  = [UIColor lightGrayColor];
     }
