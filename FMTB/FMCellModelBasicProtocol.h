@@ -46,7 +46,7 @@
 @property (nonatomic, assign) BOOL useNib;
 
 /*!
- *  @brief cell的交互响应对象
+ *  @brief cell代理响应对象
  */
 @property (nonatomic, assign) id cellResponder;
 
